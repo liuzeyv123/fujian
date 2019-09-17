@@ -1,0 +1,14 @@
+body{text-align:center;margin:0;}
+.fbox{
+	width: 100vmin;
+	height: 100vmin;
+	margin: auto;
+}
+.fbox>div{
+	background-color:orange;
+	width: 31.3vmin;
+	height: 31.3vmin;
+	margin:5px ;
+	float: left;
+	border-radius:10px;
+}
