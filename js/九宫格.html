@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#aBody {
+				width: 70vmin;
+				height: 70vmin;
+				margin: 0 auto;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			
+			.box {
+				width: 31.3%;
+				height: 31.3%;
+				margin: 1%;
+				border-radius: 10px;
+				background: red;
+			}
+			
+			.footer {
+				width: 70vmin;
+				margin: 0 auto;
+			}
+			
+			.btn {
+				width: 70vmin;
+				height: 30px;
+				display: block;
+				margin: 5px auto;
+				background: orange;
+				border-radius: 7px;
+				outline: none;
+				border: none;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+				var aBody = document.getElementById("aBody");
+				var box = document.getElementsByClassName("box");
+				var btn = document.getElementsByClassName("btn");
+
+				function autoPlay() {
+					for(var j = 0; j < 9; j++) {
+						box[j].style.backgroundColor = "red";
+					}
+
+					function randomCoClipboar() {
+						var color = "#";
+						//随机roll一个颜色
+						for(var i = 0; i < 6; i++) {
+							var colorNumber = Math.floor(Math.random() * 16).toString(16);
+							color += colorNumber;
+						}
+						return color;
+					}
+					var randomNum = [];
+					//roll三个box
+					for(var k = 0; k < 3; k++) {
+						randomNum[k] = Math.floor(Math.random() * 9)
+						for(var m = 0; m < k; m++) {
+							if(randomNum[m] == randomNum[k]) {
+								m--;
+								k--;
+							}
+						}
+					}
+					for(var l = 0; l < 3; l++) {
+						box[randomNum[l]].style.backgroundColor = randomCoClipboar();
+					}
+
+				}
+				//开始按钮
+				btn[0].onclick = function() {
+					autoPlay();
+					t = setInterval(autoPlay, 1500);
+					btn[0].onclick = function() {}
+				}
+				//停止按钮
+				btn[1].onclick = function() {
+					clearInterval(t);
+
+					for(var j = 0; j < 9; j++) {
+						box[j].style.backgroundColor = "red";
+					}
+					btn[0].onclick = function() {
+						setInterval(autoPlay, 1500)
+						btn[0].onclick = function() {}
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="aBody">
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+		</div>
+		<div class="footer">
+			<input type="button" class="btn" value="开始" />
+			<input type="button" class="btn" value="停止" />
+		</div>
+	</body>
+
+</html>
