@@ -23,7 +23,7 @@
 				height: 31.3%;
 				margin: 1%;
 				border-radius: 10px;
-				background: red;
+				background: orange;
 			}
 			
 			.footer {
@@ -36,10 +36,14 @@
 				height: 30px;
 				display: block;
 				margin: 5px auto;
-				background: orange;
+				border: 1px solid;
 				border-radius: 7px;
 				outline: none;
-				border: none;
+				cursor: pointer;
+				background-color: transparent;
+			}
+			.btn:hover{
+				background: orange;
 			}
 		</style>
 		<script>
@@ -50,7 +54,7 @@
 
 				function autoPlay() {
 					for(var j = 0; j < 9; j++) {
-						box[j].style.backgroundColor = "red";
+						box[j].style.backgroundColor = "orange";
 					}
 
 					function randomCoClipboar() {
@@ -89,10 +93,11 @@
 					clearInterval(t);
 
 					for(var j = 0; j < 9; j++) {
-						box[j].style.backgroundColor = "red";
+						box[j].style.backgroundColor = "orange";
 					}
 					btn[0].onclick = function() {
-						setInterval(autoPlay, 1500)
+						autoPlay();
+						t=setInterval(autoPlay, 1500);
 						btn[0].onclick = function() {}
 					}
 				}
